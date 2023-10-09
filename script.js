@@ -3,9 +3,11 @@ for (i=0;i < buttonsDrum; i++){
     document.querySelectorAll(".drum")[i].addEventListener("click", function(){
         var keyValue = this.innerHTML;
         makeSound (keyValue);
+        buttonAnim(keyValue);
 })}
 document.addEventListener("keydown", function(event){
     makeSound(event.key);
+    buttonAnim(event.key);
 })
 function makeSound (key){
     switch (key) {
@@ -35,4 +37,11 @@ function makeSound (key){
                 console.log (key);
             break;
     }
+}
+function buttonAnim(currentKey){
+    var forButton = document.querySelector("." + currentKey);
+    forButton.classList.add("pressed");
+    setTimeout(function(){
+        forButton.classList.remove("pressed");
+    }, 2);
 }
